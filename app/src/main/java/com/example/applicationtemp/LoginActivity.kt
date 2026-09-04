@@ -9,11 +9,11 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class LoginActivity : AppCompatActivity() {
-    val TAG = "LoginActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -23,8 +23,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onStart() {
-        display(msg = "onStart method is called.")
         super.onStart()
+        display(msg = "onStart method is called.")
     }
 
     override fun onPause() {
@@ -33,11 +33,16 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        display(msg = "OnResume method is called.")
         super.onResume()
+        display(msg = "onResume method is called.")
     }
-    fun display(msg:String){
-        Log.i(TAG,msg)
-        Toast.makeText(this, "msg", Toast.LENGTH_SHORT).show()
+
+    fun display(msg: String) {
+        Log.i(TAG, msg)
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+        private const val TAG = "LoginActivity"
     }
 }
